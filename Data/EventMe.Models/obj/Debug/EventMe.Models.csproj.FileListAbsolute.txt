@@ -1,0 +1,13 @@
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\EventMe.Models.dll.config
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\EventMe.Models.dll
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\EventMe.Models.pdb
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\EntityFramework.dll
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\EntityFramework.SqlServer.dll
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\EntityFramework.xml
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\EntityFramework.SqlServer.xml
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\obj\Debug\EventMe.Models.dll
+F:\SoftUni\Projects\ASP.NET MVC\EventMe\Data\EventMe.Models\obj\Debug\EventMe.Models.pdb

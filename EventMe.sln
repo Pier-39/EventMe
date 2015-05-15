@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{6D717B28-12E2-48FE-B836-6D818B093EE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{14DE2E7F-2959-4E95-8AAE-4C794FACBFE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Libraries", "External Libraries", "{8244C084-93A3-44DD-91A2-AF719A400F37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E22FF746-1F8E-40DF-9DE8-0955F7522E55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMe.Data", "Data\EventMe.Data\EventMe.Data.csproj", "{B6156BD6-1F53-439F-8C72-0051E40C3FAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMe.Models", "Data\EventMe.Models\EventMe.Models.csproj", "{F908F999-62B0-47E1-BAAE-2C1FFCB363B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMe.WebApplication", "Web\EventMe.WebApplication\EventMe.WebApplication.csproj", "{BE56AA8F-972B-45FE-9994-67185CA68FC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6156BD6-1F53-439F-8C72-0051E40C3FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6156BD6-1F53-439F-8C72-0051E40C3FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6156BD6-1F53-439F-8C72-0051E40C3FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6156BD6-1F53-439F-8C72-0051E40C3FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F908F999-62B0-47E1-BAAE-2C1FFCB363B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F908F999-62B0-47E1-BAAE-2C1FFCB363B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F908F999-62B0-47E1-BAAE-2C1FFCB363B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F908F999-62B0-47E1-BAAE-2C1FFCB363B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE56AA8F-972B-45FE-9994-67185CA68FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE56AA8F-972B-45FE-9994-67185CA68FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE56AA8F-972B-45FE-9994-67185CA68FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE56AA8F-972B-45FE-9994-67185CA68FC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B6156BD6-1F53-439F-8C72-0051E40C3FAB} = {6D717B28-12E2-48FE-B836-6D818B093EE5}
+		{F908F999-62B0-47E1-BAAE-2C1FFCB363B9} = {6D717B28-12E2-48FE-B836-6D818B093EE5}
+		{BE56AA8F-972B-45FE-9994-67185CA68FC9} = {14DE2E7F-2959-4E95-8AAE-4C794FACBFE7}
+	EndGlobalSection
+EndGlobal
