@@ -56,10 +56,12 @@
     <Compile Include="Country.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventComment.cs" />
+    <Compile Include="EventGallery.cs" />
     <Compile Include="EventStatus.cs" />
     <Compile Include="EventType.cs" />
     <Compile Include="MessageStatus.cs" />
     <Compile Include="PersonalMessage.cs" />
+    <Compile Include="GalleryPhoto.cs" />
     <Compile Include="Town.cs" />
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

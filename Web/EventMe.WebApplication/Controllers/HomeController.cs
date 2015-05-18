@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace EventMe.WebApplication.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public ActionResult About()

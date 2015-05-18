@@ -11,7 +11,7 @@ using EventMe.WebApplication.Models;
 namespace EventMe.WebApplication.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

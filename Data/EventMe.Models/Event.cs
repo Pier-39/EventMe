@@ -25,6 +25,10 @@
 
         public int MaxAttendantsAllowed { get; set; }
 
+        public int EventGalleryId { get; set; }
+
+        public virtual EventGallery EventGallery { get; set; }
+
         public virtual ICollection<ApplicationUser> AttendingUsers { get; set; }
 
         public virtual ICollection<EventComment> Comments { get; set; }

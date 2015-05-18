@@ -29,7 +29,11 @@
 
         public virtual ICollection<ApplicationUser> Friends { get; set; }
 
+        [InverseProperty("Organizer")]
         public virtual ICollection<Event> Events { get; set; }
+
+        [InverseProperty("AttendingUsers")]
+        public virtual ICollection<Event> AttendingEvents { get; set; } 
 
         public virtual ICollection<PersonalMessage> SentMessages { get; set; }
 
