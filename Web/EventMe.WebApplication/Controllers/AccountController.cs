@@ -13,6 +13,7 @@ using EventMe.WebApplication.Models;
 namespace EventMe.WebApplication.Controllers
 {
     using EventMe.Models;
+    using System.IO;
 
     [Authorize]
     public class AccountController : Controller
@@ -77,7 +78,7 @@ namespace EventMe.WebApplication.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -153,7 +154,31 @@ namespace EventMe.WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    FullName = model.FullName,
+                    UserName = model.Username,
+                    Email = model.Email,
+                    ImageDataUrl = "/Content/Images/Users/incognito-avatar.jpg",
+                    RegistrationDate = DateTime.Now,
+                };
+
+                // upload image if existing
+                if (model.ImageDataUrl != null && model.ImageDataUrl.ContentLength > 0)
+                {
+                        var file = Request.Files[0];
+                        string pathToSave = Server.MapPath("~/Content/Images/Users/");
+                        string filename = Path.GetFileName(file.FileName);
+
+                        //ad current datetime to filename for uniqueness and save to file system
+                        string curentDateTimeString = DateTime.Now.ToString("hh-mm-ss-yyyy-mm-d");
+                        filename = curentDateTimeString + filename;
+                        file.SaveAs(Path.Combine(pathToSave, filename));
+
+                        // ad photo path in database
+                        user.ImageDataUrl = "/Content/Images/Users/" + filename;                  
+                }
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -173,6 +198,8 @@ namespace EventMe.WebApplication.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
 
         //
         // GET: /Account/ConfirmEmail
@@ -424,7 +451,6 @@ namespace EventMe.WebApplication.Controllers
 
             base.Dispose(disposing);
         }
-
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

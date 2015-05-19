@@ -2,15 +2,17 @@
 {
     using System.Data.Entity;
 
-    using EventMe.Models;
-
     using Microsoft.AspNet.Identity.EntityFramework;
+
+    using EventMe.Models;
+    using EventMe.Data.Migrations;
 
     public class EventMeDbContext : IdentityDbContext<ApplicationUser>, IEventMeDbContext
     {
         public EventMeDbContext()
             : base("name=EventMeDbContext", false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EventMeDbContext, Configuration>());
         }
 
         public virtual IDbSet<Country> Countries{ get; set; }

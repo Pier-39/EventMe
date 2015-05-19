@@ -37,16 +37,6 @@
             private set { this.data = value; }
         }
 
-        protected string ConvertImageToBase64String(HttpPostedFileBase image)
-        {
-            var stream = image.InputStream;
-            byte[] fileBytes = new byte[stream.Length];
-            int byteCount = stream.Read(fileBytes, 0, (int)stream.Length);
-            string fileContent = Convert.ToBase64String(fileBytes);
-
-            return "data:image/" + image.ContentType + ";" + "base64, " + fileContent;
-        }
-
         protected override System.IAsyncResult BeginExecute(System.Web.Routing.RequestContext requestContext, System.AsyncCallback callback, object state)
         {
             if (requestContext.HttpContext.User.Identity.IsAuthenticated)

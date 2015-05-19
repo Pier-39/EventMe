@@ -1,12 +1,52 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    margin: 5px 20px !important;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.main-navbar-links {
+    color: white !important;
+}
+
+.main-navbar-links:hover {
+    color: #E6E6E6 !important;
+    /*color: black !important;*/
+}
+
+.user-profile-navbar-link {
+  font-weight: bolder;
+  font-size: 17px;
+}
+
+.upload-image-input-div {
+    padding-left: 15px !important;
+}
+
+#profile-picure {
+    width: 210px !important;
+}
+
+.site-logo {
+    color: white !important;
+    font-weight: bolder;
+    font-size: 26px;
+}
+
+.center {
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +61,25 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+    /*image file upload button*/
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
 }

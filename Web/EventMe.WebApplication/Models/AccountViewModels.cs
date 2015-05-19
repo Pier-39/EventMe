@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace EventMe.WebApplication.Models
+﻿namespace EventMe.WebApplication.Models
 {
+    using System.Web;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using EventMe.WebApplication.Attributes;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -49,9 +52,8 @@ namespace EventMe.WebApplication.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +66,17 @@ namespace EventMe.WebApplication.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Username")]
+        [StringLength(15, ErrorMessage = "The {0} must be between {2} and {1} characters.", MinimumLength = 2)]
+        [RegularExpression(@"^[\S]*$", ErrorMessage = "The {0} can not contain white spaces.")]
+        public string Username { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        [StringLength(30, ErrorMessage = "The {0} must be between {2} and {1} characters.", MinimumLength = 2)]
+        public string FullName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +92,12 @@ namespace EventMe.WebApplication.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Upload photo")]
+        [DataType(DataType.Upload)]
+        [FileExtension(ErrorMessage = "Only jpg, png and gif format allowed.")]
+        [FileSize(ErrorMessage = "File size should be less than 500kb")]
+        public HttpPostedFileBase ImageDataUrl { get; set; }
     }
 
     public class ResetPasswordViewModel
