@@ -1,9 +1,15 @@
 namespace EventMe.Data.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+
+    using EventMe.Models;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     internal sealed class Configuration : DbMigrationsConfiguration<EventMeDbContext>
     {
@@ -15,18 +21,58 @@ namespace EventMe.Data.Migrations
 
         protected override void Seed(EventMeDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (context.Users.Any())
+            {
+                // Seed initial data only if the database is empty
+                return;
+            }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            this.SeedUsers(context);
+        }
+
+        private IList<ApplicationUser> SeedUsers(EventMeDbContext context)
+        {
+            var usernames = new string[] { "admin", "maria", "peter", "kiro", "didi" };
+
+            var users = new List<ApplicationUser>();
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            userManager.PasswordValidator = new PasswordValidator
+            {
+                RequiredLength = 2,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
+            };
+
+            foreach (var username in usernames)
+            {
+                var name = username[0].ToString().ToUpper() + username.Substring(1);
+                var user = new ApplicationUser
+                {
+                    UserName = username,
+                    FullName = name,
+                    Email = username + "@gmail.com",
+                    ImageDataUrl = null,
+                    RegistrationDate = DateTime.Now
+                };
+
+                var password = username;
+                var userCreateResult = userManager.Create(user, password);
+                if (userCreateResult.Succeeded)
+                {
+                    users.Add(user);
+                }
+                else
+                {
+                    throw new Exception(string.Join("; ", userCreateResult.Errors));
+                }
+            }
+
+            context.SaveChanges();
+
+            return users;
         }
     }
 }
