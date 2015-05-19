@@ -1,0 +1,77 @@
+=========================================
+--------------- CLASS USER --------------
+=========================================               
+   - Name                    
+   - ImageDataUrl
+   - ContactInfo[ComplexType] 
+   - RegiistrationDate
+   - ICollection<User> Freinds
+   - Collection<Event> Events
+   - Collection<Message> MessagesSent
+   - Collection<Message> MessagesRecieved
+
+=========================================
+----- ComplexType ContactInfo -----------
+=========================================      
+   - facebook account
+   - twitter account
+   - linkedin account
+   - country
+   - town
+
+=========================================
+------------- CLASS MESSAGE -------------
+=========================================     
+    - COntent
+    - DateSend
+    - SenderId
+    - Sender(User)
+    - RecieverId
+    - Reciever(User)
+    - MessageStatus(Enum)
+
+=========================================
+--------- ENUM MESSAGE-STATUS -----------
+=========================================
+    - Unread,
+    - Read,
+    - Deleted,
+    - Reported   
+
+=========================================
+------------- CLASS EVENT ---------------
+=========================================
+    - Title
+    - Description
+    - Date
+    - RatedStars
+    - EventTtpe(Enum)
+    - EventStatus(Enum)
+    - OrganizerId
+    - Organizer(User)
+    - ICollection<User> AttendingUsers
+    - ICollection<EventPosts> EventPosts
+
+=========================================
+---------- ENUM EVENT-TYPE --------------
+=========================================
+     - Social
+     - Ecological
+     - Economical
+     - Educational
+     
+=========================================
+---------- ENUM EVENT-STATUS ------------
+=========================================
+     - FutureEvent
+     - PastEvent
+     - CurrentToday
+
+     
+
+
+
+
+
+  
+

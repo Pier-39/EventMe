@@ -18,6 +18,13 @@ namespace EventMe.WebApplication
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            // handle non-existing urls
+            routes.MapRoute(
+                name: "404-PageNotFound",
+                url: "{*url}",
+                defaults: new { controller = "Home", action = "NotFound" }
+            );
         }
     }
 }
