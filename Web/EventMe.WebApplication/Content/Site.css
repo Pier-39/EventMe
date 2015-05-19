@@ -49,6 +49,21 @@
     margin-right: auto !important;
 }
 
+.user-panel-container {
+    margin-top: 20px;
+    padding: 5px !important;
+}
+
+.home-page-events-containter {
+    margin-top: 20px;
+}
+
+.right-panel-container {
+    margin-top: 20px;
+    padding: 5px !important;
+}
+
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

@@ -15,8 +15,26 @@ namespace EventMe.WebApplication.Controllers
         {
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
+            // redirect user to dashboard if logged 
+            if (this.UserProfile != null)
+            {
+                return this.RedirectToAction("Dashboard", "Home");
+            }
+
+            return this.View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Dashboard()
+        {
+            var currentUser = this.UserProfile;
+            ViewBag.CurrentUser = currentUser;
+
+            //TODO return events in a paged list model to the view
             return this.View();
         }
 

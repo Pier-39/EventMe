@@ -11,7 +11,7 @@ namespace EventMe.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EventMeDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<EventMeDbContext>
     {
         public Configuration()
         {
@@ -54,7 +54,7 @@ namespace EventMe.Data.Migrations
                     UserName = username,
                     FullName = name,
                     Email = username + "@gmail.com",
-                    ImageDataUrl = null,
+                    ImageDataUrl = "/Content/Images/Users/incognito-avatar.jpg",
                     RegistrationDate = DateTime.Now
                 };
 
