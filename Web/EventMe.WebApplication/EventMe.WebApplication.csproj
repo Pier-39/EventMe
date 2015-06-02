@@ -197,6 +197,7 @@
     <Compile Include="Attributes\FileSizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -209,6 +210,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.cosmo.css" />
+    <Content Include="Content\bootstrap.cosmo.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
@@ -271,6 +274,7 @@
     <Content Include="Views\Home\_RightSidePanelPartial.cshtml" />
     <Content Include="Views\Home\_UserLeftPanelPartial.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
