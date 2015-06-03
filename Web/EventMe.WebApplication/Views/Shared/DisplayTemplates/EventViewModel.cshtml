@@ -1,0 +1,16 @@
+﻿@model EventMe.WebApplication.ViewModels.EventViewModel
+
+<li>
+    <time datetime="@Model.Date">
+        <span class="day">@Model.Date.Day</span>
+        <span class="month">@Model.Date.ToString("MMM")</span>
+        <span class="year">@Model.Date.Year</span>
+        <span class="time">ALL DAY</span>
+    </time>
+    <img alt="@Model.Title event" src="@Model.ImagePath"/>
+    <div class="info">
+        <h2 class="title">@(Html.ActionLink<EventsController>(Model.Title, c => c.Details(@Model.Id), new { area = "" }))</h2>
+        @(Html.ActionLink<EventsController>("EventMe", c => c.EventMe(@Model.Id), new { area = "" }, new { @class = "btn btn-primary btn-lg pull-right" }))
+        <p class="desc">@Model.Description</p>
+    </div>
+</li>

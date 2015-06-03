@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using EventMe.WebApplication.Models;
+using EventMe.WebApplication.ViewModels;
 
 namespace EventMe.WebApplication
 {

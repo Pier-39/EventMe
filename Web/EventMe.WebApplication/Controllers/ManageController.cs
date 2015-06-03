@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using EventMe.WebApplication.Models;
+using EventMe.WebApplication.ViewModels;
 
 namespace EventMe.WebApplication.Controllers
 {

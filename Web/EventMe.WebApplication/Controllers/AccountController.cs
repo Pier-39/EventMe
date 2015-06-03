@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using EventMe.WebApplication.Models;
+using EventMe.WebApplication.ViewModels;
 
 namespace EventMe.WebApplication.Controllers
 {
@@ -163,19 +163,19 @@ namespace EventMe.WebApplication.Controllers
                     RegistrationDate = DateTime.Now,
                 };
 
-                // upload image if existing
+                // Upload image if existing.
                 if (model.ImageDataUrl != null && model.ImageDataUrl.ContentLength > 0)
                 {
-                        var file = Request.Files[0];
-                        string pathToSave = Server.MapPath("~/Content/Images/Users/");
+                        var file = this.Request.Files[0];
+                        string pathToSave = this.Server.MapPath("~/Content/Images/Users/");
                         string filename = Path.GetFileName(file.FileName);
 
-                        //ad current datetime to filename for uniqueness and save to file system
+                        // Add current datetime to filename for uniqueness and save to file system.
                         string curentDateTimeString = DateTime.Now.ToString("hh-mm-ss-yyyy-mm-d");
                         filename = curentDateTimeString + filename;
                         file.SaveAs(Path.Combine(pathToSave, filename));
 
-                        // ad photo path in database
+                        // Add photo path in database.
                         user.ImageDataUrl = "/Content/Images/Users/" + filename;                  
                 }
 

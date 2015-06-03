@@ -1,4 +1,4 @@
-﻿namespace EventMe.WebApplication.Models
+﻿namespace EventMe.WebApplication.ViewModels
 {
     using System.Web;
     using System.Collections.Generic;
