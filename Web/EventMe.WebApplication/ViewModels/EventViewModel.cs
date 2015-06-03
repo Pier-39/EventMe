@@ -21,11 +21,11 @@
                         Description = x.Description,
                         Date = x.Date,
                         RatedStars = x.RatedStars,
-                        Type = x.Type,
-                        Status = x.Status,
+                        FieldType = x.FieldType,
+                        StatusType = x.StatusType,
                         Organizer = x.Organizer.UserName,
                         MaxAttendantsAllowed = x.MaxAttendantsAllowed,
-                        ImagePath = x.EventGallery.Photos.FirstOrDefault().Path
+                        ImagePath = ""
                     };
             }
         }
@@ -41,9 +41,9 @@
 
         public int RatedStars { get; set; }
 
-        public EventType Type { get; set; }
+        public EventFieldType FieldType { get; set; }
 
-        public EventStatus Status { get; set; }
+        public EventStatusType StatusType { get; set; }
 
         public string Organizer { get; set; }
 

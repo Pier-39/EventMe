@@ -38,7 +38,7 @@ namespace EventMe.WebApplication.Controllers
             var eventEntity =
             this.Data.Events.All().Select(EventViewModel.ViewModel).FirstOrDefault();
 
-            return View(eventEntity);
+            return this.View(eventEntity);
         }
 
         // GET: Events/Create

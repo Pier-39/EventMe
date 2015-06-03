@@ -21,16 +21,75 @@ namespace EventMe.Data.Migrations
 
         protected override void Seed(EventMeDbContext context)
         {
-            if (context.Users.Any())
+            if (!context.Users.Any())
             {
-                // Seed initial data only if the database is empty
-                return;
+                this.SeedUsers(context);
             }
 
-            this.SeedUsers(context);
+            if (!context.MessageStatuses.Any())
+            {
+                this.SeedMessageStatuses(context);
+            }
+
+            if (!context.EventStatuses.Any())
+            {
+                this.SeedEventStatuses(context);
+            }
+
+
+            if (!context.EventTypes.Any())
+            {
+                this.SeedEventTypes(context);
+            }
         }
 
-        private IList<ApplicationUser> SeedUsers(EventMeDbContext context)
+        private void SeedMessageStatuses(EventMeDbContext context)
+        {
+            foreach (var messageStatus in Enum.GetValues(typeof(MessageStatusType)))
+            {
+                var messageStatusEntity = new MessageStatus
+                                          {
+                                              Type = (MessageStatusType)messageStatus,
+                                              Name = messageStatus.ToString()
+                                          };
+                context.MessageStatuses.Add(messageStatusEntity);
+            }
+
+            context.SaveChanges();
+        }
+
+        private void SeedEventStatuses(EventMeDbContext context)
+        {
+            foreach (var eventStatus in Enum.GetValues(typeof(EventStatusType)))
+            {
+                var eventStatusEntity = new EventStatus
+                                        {
+                                            Type = (EventStatusType)eventStatus,
+                                            Name = eventStatus.ToString()
+                                        };
+                context.EventStatuses.Add(eventStatusEntity);
+            }
+
+            context.SaveChanges();
+        }
+
+        private void SeedEventTypes(EventMeDbContext context)
+        {
+            foreach (var eventType in Enum.GetValues(typeof(EventFieldType)))
+            {
+                var eventTypeEntity = new EventType
+                                      {
+                                          Type = (EventFieldType)eventType, 
+                                          Name = eventType.ToString()
+                                      };
+
+                context.EventTypes.Add(eventTypeEntity);
+            }
+
+            context.SaveChanges();
+        }
+
+        private void SeedUsers(EventMeDbContext context)
         {
             var usernames = new string[] { "admin", "maria", "peter", "kiro", "didi" };
 
@@ -71,8 +130,6 @@ namespace EventMe.Data.Migrations
             }
 
             context.SaveChanges();
-
-            return users;
         }
     }
 }

@@ -23,9 +23,11 @@
 
         public virtual IDbSet<EventComment> EventComments { get; set; }
 
-        public virtual IDbSet<EventGallery> EventGalleries { get; set; }
+        public virtual IDbSet<EventType> EventTypes { get; set; }
 
-        public virtual IDbSet<GalleryPhoto> GalleryPhotos { get; set; }
+        public virtual IDbSet<EventStatus> EventStatuses { get; set; }
+
+        public virtual IDbSet<MessageStatus> MessageStatuses { get; set; } 
 
         public virtual IDbSet<PersonalMessage> PersonalMessages { get; set; }
 

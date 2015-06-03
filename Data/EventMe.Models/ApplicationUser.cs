@@ -50,8 +50,10 @@
         [InverseProperty("AttendingUsers")]
         public virtual ICollection<Event> AttendingEvents { get; set; } 
 
+        [InverseProperty("Sender")]
         public virtual ICollection<PersonalMessage> SentMessages { get; set; }
 
+        [InverseProperty("Receiver")]
         public virtual ICollection<PersonalMessage> ReceivedMessages { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

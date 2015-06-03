@@ -18,6 +18,8 @@
 
         public virtual ApplicationUser Receiver { get; set; }
 
-        public MessageStatus Status { get; set; }
+        public MessageStatusType StatusType { get; set; }
+
+        public virtual MessageStatus Status { get; set; }
     }
 }

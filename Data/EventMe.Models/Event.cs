@@ -15,9 +15,13 @@
 
         public int RatedStars { get; set; }
 
-        public EventType Type { get; set; }
+        public EventFieldType FieldType { get; set; }
 
-        public EventStatus Status { get; set; }
+        public virtual EventType Field { get; set; }
+
+        public EventStatusType StatusType { get; set; }
+
+        public virtual EventStatus Status { get; set; }
 
         public string OrganizerId { get; set; }
 
@@ -25,9 +29,7 @@
 
         public int MaxAttendantsAllowed { get; set; }
 
-        public int EventGalleryId { get; set; }
-
-        public virtual EventGallery EventGallery { get; set; }
+        public string PhotoUrl { get; set; }
 
         public virtual ICollection<ApplicationUser> AttendingUsers { get; set; }
 

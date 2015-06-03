@@ -13,11 +13,13 @@
 
         IRepository<EventComment> EventComments { get; }
 
-        IRepository<EventGallery> EventGalleries { get; }
-
-        IRepository<GalleryPhoto> GalleryPhotos { get; }
-
         IRepository<Country> Countries { get; }
+
+        IRepository<EventType> EventTypes { get; }
+
+        IRepository<EventStatus> EventStatuses { get; }
+
+        IRepository<MessageStatus> MessageStatuses { get; }
 
         IRepository<Town> Towns { get; }
 

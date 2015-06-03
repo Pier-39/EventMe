@@ -1,10 +1,15 @@
 ﻿namespace EventMe.Models
 {
-    public enum MessageStatus
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("MessageStatuses")]
+    public class MessageStatus
     {
-        Unread,
-        Read,
-        Deleted,
-        Reported
+        [Key]
+        public MessageStatusType Type { get; set; }
+
+        [Required]
+        public string Name { get; set; }
     }
 }

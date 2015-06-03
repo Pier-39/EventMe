@@ -1,9 +1,15 @@
 ﻿namespace EventMe.Models
 {
-    public enum EventStatus
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("EventStatuses")]
+    public class EventStatus
     {
-        Future,
-        Past,
-        Today
+        [Key]
+        public EventStatusType Type { get; set; }
+
+        [Required]
+        public string Name { get; set; }
     }
 }

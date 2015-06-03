@@ -54,19 +54,27 @@
             }
         }
 
-        public IRepository<EventGallery> EventGalleries
+        public IRepository<EventType> EventTypes 
         {
             get
             {
-                return this.GetRepository<EventGallery>();
+                return this.GetRepository<EventType>();
             }
         }
 
-        public IRepository<GalleryPhoto> GalleryPhotos
+        public IRepository<EventStatus> EventStatuses
         {
             get
             {
-                return this.GetRepository<GalleryPhoto>();
+                return this.GetRepository<EventStatus>();
+            }
+        }
+
+        public IRepository<MessageStatus> MessageStatuses
+        {
+            get
+            {
+                return this.GetRepository<MessageStatus>();
             }
         }
 

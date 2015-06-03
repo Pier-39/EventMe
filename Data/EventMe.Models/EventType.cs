@@ -1,15 +1,17 @@
 ﻿namespace EventMe.Models
 {
-    public enum EventType
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("EventTypes")]
+    public class EventType
     {
-        Social,
-        Ecological,
-        Economical,
-        Educational,
-        Entertainment,
-        Music,
-        Art,
-        Personal,
-        Other
+        [Key]
+        public EventFieldType Type { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        
     }
 }
