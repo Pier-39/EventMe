@@ -207,6 +207,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InputModels\EventInputModel.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -283,10 +284,10 @@
     <None Include="Views\Events\Add.cshtml" />
     <None Include="Views\Events\Details.cshtml" />
     <None Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EventInputModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="InputModels\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

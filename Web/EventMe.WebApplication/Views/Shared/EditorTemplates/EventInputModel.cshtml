@@ -1,0 +1,71 @@
+﻿@using EventMe.Models
+@model EventMe.WebApplication.InputModels.EventInputModel
+
+@using (Html.BeginForm<EventsController>(
+    c => c.Add(), 
+    FormMethod.Post, 
+    new {}, 
+    new { @class = "form-horizontal center col-md-6 add-event-form", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h4 class="text-center">Easier than ever before.</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(x => x.Title, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Description, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Date, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.EditorFor(x => x.Date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.Date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.FieldType, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.DropDownListFor(x => x.FieldType, EnumHelper.GetSelectList(typeof(EventFieldType)), new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.FieldType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MaxAttendantsAllowed, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.EditorFor(x => x.MaxAttendantsAllowed, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.MaxAttendantsAllowed, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.PhotoUrl, new { @class = "col-md-4 control-label" })
+        <div class="col-md-6 input-group upload-image-input-div">
+            <span class="input-group-btn">
+                <span class="btn btn-info btn-file">
+                    Browse
+                    <input type="file" name="PhotoUrl" class="PhotoUrl" onchange="readURL(this);" accept="image/gif, image/jpeg, image/png, image/jpg" />
+                </span>
+            </span>
+            <input type="text" class="form-control image-title" readonly="" id="event-picure" value="" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 center">
+            @Html.ValidationMessageFor(x => x.PhotoUrl, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group ">
+        <div class="col-md-4 center">
+            <input type="submit" class="btn btn-success" value="Submit" />
+        </div>
+    </div>
+}

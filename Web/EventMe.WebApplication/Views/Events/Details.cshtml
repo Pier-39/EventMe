@@ -3,3 +3,30 @@
 @{
     ViewBag.Title = Model.Title + " - Details";
 }
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+    <div class="row panel">
+        <div class="col-md-4 bg_blur ">
+            @(Html.ActionLink("Attend", "Attend", new { }, new { @class = "follow_btn hidden-xs" }))
+        </div>
+        <div class="col-md-8  col-xs-12">
+            <img src="@Model.ImagePath" class="img-thumbnail picture hidden-xs" />
+            <img src="@Model.ImagePath" class="img-thumbnail visible-xs picture_mob" />
+            <div class="header">
+                <h1>@Model.Title</h1>
+                <h4>by @Model.Organizer on @Model.Date.ToLongDateString() at @Model.Date.ToShortTimeString()</h4>
+                <span>@Model.Description</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row nav">
+        <div class="col-md-4"></div>
+        <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+            <div class="col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i>@Model.CommentsCount</div>
+            <div class="col-md-4 col-xs-4 well"><i class="glyphicon glyphicon-user"></i>@Model.AttendantsCount/@Model.MaxAttendantsAllowed</div>
+        </div>
+    </div>
+</div>

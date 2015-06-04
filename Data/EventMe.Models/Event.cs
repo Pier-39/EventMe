@@ -19,10 +19,6 @@
 
         public virtual EventType Field { get; set; }
 
-        public EventStatusType StatusType { get; set; }
-
-        public virtual EventStatus Status { get; set; }
-
         public string OrganizerId { get; set; }
 
         public virtual ApplicationUser Organizer { get; set; }

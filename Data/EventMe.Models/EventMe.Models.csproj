@@ -57,8 +57,6 @@
     <Compile Include="Event.cs" />
     <Compile Include="EventComment.cs" />
     <Compile Include="EventType.cs" />
-    <Compile Include="EventStatus.cs" />
-    <Compile Include="EventStatusType.cs" />
     <Compile Include="EventFieldType.cs" />
     <Compile Include="MessageStatus.cs" />
     <Compile Include="MessageStatusType.cs" />

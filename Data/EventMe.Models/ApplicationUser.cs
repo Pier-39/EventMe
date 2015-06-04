@@ -12,7 +12,21 @@
 
     public class ApplicationUser : IdentityUser
     {
-        
+        private ICollection<PersonalMessage> receivedMessages;
+        private ICollection<PersonalMessage> sentMessages;
+        private ICollection<ApplicationUser> friends;
+        private ICollection<Event> attendingEvents;
+        private ICollection<Event> events;
+
+        public ApplicationUser()
+        {
+            this.receivedMessages = new HashSet<PersonalMessage>();
+            this.sentMessages = new HashSet<PersonalMessage>();
+            this.friends = new HashSet<ApplicationUser>();
+            this.attendingEvents = new HashSet<Event>();
+            this.events = new HashSet<Event>();
+        }
+
         [Required]
         public string FullName { get; set; }
 
@@ -42,19 +56,74 @@
         [Url]
         public string Website { get; set; }
 
-        public virtual ICollection<ApplicationUser> Friends { get; set; }
+        public virtual ICollection<ApplicationUser> Friends
+        {
+            get
+            {
+                return this.friends;
+            }
+
+            set
+            {
+                this.friends = value;
+            }
+        }
 
         [InverseProperty("Organizer")]
-        public virtual ICollection<Event> Events { get; set; }
+        public virtual ICollection<Event> Events
+        {
+            get
+            {
+                return this.events;
+            }
+
+            set
+            {
+                this.events = value;
+            }
+        }
 
         [InverseProperty("AttendingUsers")]
-        public virtual ICollection<Event> AttendingEvents { get; set; } 
+        public virtual ICollection<Event> AttendingEvents
+        {
+            get
+            {
+                return this.attendingEvents;
+            }
+
+            set
+            {
+                this.attendingEvents = value;
+            }
+        }
 
         [InverseProperty("Sender")]
-        public virtual ICollection<PersonalMessage> SentMessages { get; set; }
+        public virtual ICollection<PersonalMessage> SentMessages
+        {
+            get
+            {
+                return this.sentMessages;
+            }
+
+            set
+            {
+                this.sentMessages = value;
+            }
+        }
 
         [InverseProperty("Receiver")]
-        public virtual ICollection<PersonalMessage> ReceivedMessages { get; set; }
+        public virtual ICollection<PersonalMessage> ReceivedMessages
+        {
+            get
+            {
+                return this.receivedMessages;
+            }
+
+            set
+            {
+                this.receivedMessages = value;
+            }
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

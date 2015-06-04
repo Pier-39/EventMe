@@ -62,14 +62,6 @@
             }
         }
 
-        public IRepository<EventStatus> EventStatuses
-        {
-            get
-            {
-                return this.GetRepository<EventStatus>();
-            }
-        }
-
         public IRepository<MessageStatus> MessageStatuses
         {
             get

@@ -1,9 +1,22 @@
-﻿@model IEnumerable<EventMe.WebApplication.ViewModels.EventViewModel>
+﻿@model PagedList.IPagedList<EventMe.WebApplication.ViewModels.EventViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Events";
 }
 
-<ul class="event-list">
-    @Html.DisplayFor(x => x)
-</ul>
+<div class="row">
+    @(Html.ActionLink<EventsController>("Add new event", c => c.Add(), new { area = "", }, new { @class = "btn btn-info pull-right" }))
+</div>
+
+<div class="row top-margin-10">
+    <ul class="event-list">
+        @Html.DisplayForModel(@Model)
+    </ul>
+    <br/>
+    <div class="text-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+    </div>
+    
+</div>

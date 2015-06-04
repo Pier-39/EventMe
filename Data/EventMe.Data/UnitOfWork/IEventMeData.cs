@@ -17,8 +17,6 @@
 
         IRepository<EventType> EventTypes { get; }
 
-        IRepository<EventStatus> EventStatuses { get; }
-
         IRepository<MessageStatus> MessageStatuses { get; }
 
         IRepository<Town> Towns { get; }

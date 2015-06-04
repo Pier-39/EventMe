@@ -1,7 +1,6 @@
 ﻿namespace EventMe.WebApplication.ViewModels
 {
     using System;
-    using System.Linq;
     using System.Linq.Expressions;
 
     using EventMe.Models;
@@ -21,11 +20,12 @@
                         Description = x.Description,
                         Date = x.Date,
                         RatedStars = x.RatedStars,
-                        FieldType = x.FieldType,
-                        StatusType = x.StatusType,
+                        Type = x.FieldType.ToString(),
                         Organizer = x.Organizer.UserName,
                         MaxAttendantsAllowed = x.MaxAttendantsAllowed,
-                        ImagePath = ""
+                        ImagePath = x.PhotoUrl ?? "/Content/Images/Events/DefaultEventImage.jpg",
+                        CommentsCount = x.Comments.Count,
+                        AttendantsCount = x.AttendingUsers.Count
                     };
             }
         }
@@ -41,12 +41,14 @@
 
         public int RatedStars { get; set; }
 
-        public EventFieldType FieldType { get; set; }
-
-        public EventStatusType StatusType { get; set; }
+        public string Type { get; set; }
 
         public string Organizer { get; set; }
 
         public int MaxAttendantsAllowed { get; set; }
+
+        public int CommentsCount { get; set; }
+
+        public int AttendantsCount { get; set; }
     }
 }

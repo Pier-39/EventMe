@@ -1,5 +1,15 @@
-﻿@model dynamic
+﻿@model EventMe.WebApplication.InputModels.EventInputModel
 
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Add new event";
+}
+
+<h2 class="text-center">@ViewBag.Title.</h2>
+
+@Html.EditorForModel(@Model)
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom")
 }

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Mvc.Expressions;
-
-namespace EventMe.WebApplication.Controllers
+﻿namespace EventMe.WebApplication.Controllers
 {
-    using System.Data.Entity;
+    using System.Linq;
+
+    using System.Web.Mvc;
+    using System.Web.Mvc.Expressions;
 
     using EventMe.Data.UnitOfWork;
+    using EventMe.Models;
+    using EventMe.WebApplication.InputModels;
     using EventMe.WebApplication.ViewModels;
 
-    using Microsoft.Ajax.Utilities;
-
-    using WebGrease.Css.Extensions;
+    using PagedList;
 
     public class EventsController : BaseController
     {
@@ -25,92 +21,77 @@ namespace EventMe.WebApplication.Controllers
         }
 
         // GET: Events
-        public ActionResult Index()
+        public ActionResult Index(int? page = 1)
         {
-            var events = this.Data.Events.All().Select(EventViewModel.ViewModel);
+            const int PageSize = 3;
+            int pageNumber = (page ?? 1);
 
-            return this.View(events);
+            var events = this.Data.Events.
+                All().
+                OrderByDescending(x => x.Date).
+                ThenByDescending(x => x.Id).
+                Select(EventViewModel.ViewModel);
+           
+            return this.View(events.ToPagedList(pageNumber, PageSize));
         }
 
-        // GET: Events/Details/5
-        public ActionResult Details(int? id)
+        // GET: Events/5/Details
+        public ActionResult Details(int id)
         {
             var eventEntity =
-            this.Data.Events.All().Select(EventViewModel.ViewModel).FirstOrDefault();
+            this.Data.Events.All().Select(EventViewModel.ViewModel).FirstOrDefault(x => x.Id == id);
 
             return this.View(eventEntity);
         }
 
-        // GET: Events/Create
+        // GET: Events/Add
         [HttpGet]
         public ActionResult Add()
         {
             return this.View();
         }
 
-        // POST: Events/Create
+        // POST: Events/Add
         [HttpPost]
-        public ActionResult Add(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(EventInputModel model)
         {
             try
             {
-                // TODO: Add insert logic here
+                var eventEntity = new Event
+                                  {
+                                      Title = model.Title,
+                                      Description = model.Description,
+                                      Date = model.Date,
+                                      FieldType = model.FieldType,
+                                      OrganizerId = this.UserProfile.Id,
+                                      RatedStars = 0,
+                                      PhotoUrl = model.PhotoUrl
+                                  };
 
-                return this.RedirectToAction(c => c.Index());
+                this.Data.Events.Add(eventEntity);
+                this.Data.SaveChanges();
+
+                return this.RedirectToAction(c => c.Details(eventEntity.Id));
             }
             catch
             {
-                return View();
+                return this.View();
             }
-        }
+        }    
 
-        // GET: Events/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Attend(int id)
         {
-            return View();
-        }
+            var eventEntity = this.Data.Events.All().FirstOrDefault(x => x.Id == id);
 
-        // POST: Events/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int? id, FormCollection collection)
-        {
-            try
+            if (eventEntity.AttendingUsers.Count < eventEntity.MaxAttendantsAllowed)
             {
-                // TODO: Add update logic here
+                eventEntity.AttendingUsers.Add(this.UserProfile);
 
-                return RedirectToAction("Index");
+                this.Data.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: Events/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
-
-        // POST: Events/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return this.RedirectToAction(c => c.Index());
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        public ActionResult EventMe(int? id)
-        {
-            return this.Content("Successfully Evented for " + id);
+            return this.RedirectToAction(c => c.Details(id));
         }
     }
 }

@@ -31,16 +31,34 @@ namespace EventMe.Data.Migrations
                 this.SeedMessageStatuses(context);
             }
 
-            if (!context.EventStatuses.Any())
-            {
-                this.SeedEventStatuses(context);
-            }
-
-
             if (!context.EventTypes.Any())
             {
                 this.SeedEventTypes(context);
             }
+
+            if (!context.Countries.Any() && !context.Towns.Any())
+            {
+                this.SeedCountriesAndTowns(context);
+            }
+        }
+
+        private void SeedCountriesAndTowns(EventMeDbContext context)
+        {
+            var country = new Country { Code = "BG", Name = "Bulgaria" };
+            var towns = new Town[]
+                        {
+                            new Town { Name = "Sofia", CountryCode = country.Code },
+                            new Town { Name = "Plovdiv", CountryCode = country.Code },
+                            new Town { Name = "Varna", CountryCode = country.Code },
+                            new Town { Name = "Burgas", CountryCode = country.Code },
+                            new Town { Name = "Ruse", CountryCode = country.Code },
+                            new Town { Name = "Stara Zagora", CountryCode = country.Code },
+                            new Town { Name = "Pleven", CountryCode = country.Code },   
+                        };
+            context.Countries.AddOrUpdate(country);
+            context.Towns.AddOrUpdate(towns);
+
+            context.SaveChanges();
         }
 
         private void SeedMessageStatuses(EventMeDbContext context)
@@ -53,21 +71,6 @@ namespace EventMe.Data.Migrations
                                               Name = messageStatus.ToString()
                                           };
                 context.MessageStatuses.Add(messageStatusEntity);
-            }
-
-            context.SaveChanges();
-        }
-
-        private void SeedEventStatuses(EventMeDbContext context)
-        {
-            foreach (var eventStatus in Enum.GetValues(typeof(EventStatusType)))
-            {
-                var eventStatusEntity = new EventStatus
-                                        {
-                                            Type = (EventStatusType)eventStatus,
-                                            Name = eventStatus.ToString()
-                                        };
-                context.EventStatuses.Add(eventStatusEntity);
             }
 
             context.SaveChanges();

@@ -25,8 +25,6 @@
 
         public virtual IDbSet<EventType> EventTypes { get; set; }
 
-        public virtual IDbSet<EventStatus> EventStatuses { get; set; }
-
         public virtual IDbSet<MessageStatus> MessageStatuses { get; set; } 
 
         public virtual IDbSet<PersonalMessage> PersonalMessages { get; set; }
